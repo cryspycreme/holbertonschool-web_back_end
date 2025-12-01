@@ -13,11 +13,13 @@ async_comprehension = __import__('1-async_comprehension').async_comprehension
 async def measure_runtime() -> float:
     """Measure elapsed time"""
     start_time = time.time()
-    await asyncio.gather(
+    coroutine_objects = [
         async_comprehension(),
         async_comprehension(),
         async_comprehension(),
-        async_comprehension())
+        async_comprehension()
+    ]
+    await asyncio.gather(*coroutine_objects)
     end_time = time.time()
     elapsed_time = end_time - start_time
 

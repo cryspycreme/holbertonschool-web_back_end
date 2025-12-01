@@ -25,7 +25,6 @@ async def measure_runtime() -> float:
         async_comprehension(),
         async_comprehension())
     end_time = time.time()
-    print(end_time)
     elapsed_time = end_time - start_time
 
     return elapsed_time

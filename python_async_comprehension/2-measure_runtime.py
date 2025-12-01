@@ -5,12 +5,12 @@
 import asyncio
 import random
 import time
-from typing import Generator, List
+from typing import Generator, List, Float
 
 async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 
-async def measure_runtime():
+async def measure_runtime() -> Float:
     """Measure elapsed time"""
     start_time = time.time()
     # coroutine_objects = [

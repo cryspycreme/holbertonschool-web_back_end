@@ -30,7 +30,6 @@ class Server:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
-
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
@@ -45,4 +44,30 @@ class Server:
             for row in csv_reader:
                 data.append(row)
         return data[indexes[0]: indexes[1]]
-  
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """Returns a dictionary of hypermedia key-value pairs"""
+        start_index, end_index = index_range(page, page_size)
+
+        next_page = None
+        if (len(self.dataset()) > end_index):
+            next_page = page + 1
+
+        prev_page = None
+        if (page > 1):
+            prev_page = page - 1
+
+        total_pages = int(len(self.dataset())/10)
+        if (page_size > 0):
+            total_pages = int(len(self.dataset())/page_size)
+
+        hyper_dict = {
+            'page_size': page_size,
+            'page': page,
+            'data': self.get_page(page, page_size),
+            'next_page': next_page,
+            'prev_page': prev_page,
+            'total_pages': total_pages,
+        }
+
+        return hyper_dict

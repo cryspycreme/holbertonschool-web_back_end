@@ -52,6 +52,8 @@ class Server:
         next_page = None
         if (len(self.dataset()) > end_index):
             next_page = page + 1
+            if next_page > int(len(self.dataset())/page_size):
+                next_page = None
 
         prev_page = None
         if (page > 1):

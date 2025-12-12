@@ -1,0 +1,8 @@
+// my comment
+
+query_filter = {'name': 'Holberton school'}
+update_operation = {'$set':
+{ 'address': '972 Mission street'}
+}
+
+db.school.update_many(query_filter, update_operation)

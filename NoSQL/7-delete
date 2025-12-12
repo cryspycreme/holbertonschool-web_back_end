@@ -1,3 +1,3 @@
 // my comment
 
-db.school.delete_many({name: 'Holberton school'})
+db.school.deleteMany({name: 'Holberton school'})

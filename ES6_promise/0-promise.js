@@ -1,5 +1,3 @@
-import { resolve } from 'node:dns';
-
 export default function getResponseFromAPI() {
   const myPromise = new Promise((resolve, reject) => {
     const success = true;

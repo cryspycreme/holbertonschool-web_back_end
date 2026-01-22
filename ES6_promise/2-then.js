@@ -1,10 +1,13 @@
 export default function handleResponseFromAPI(promise) {
   const myPromise = new Promise((resolve, reject) => {
-    resolve({
-      status: 200,
-      body: 'Success',
-    });
-    reject(new Error());
+    if (promise) {
+      resolve({
+        status: 200,
+        body: 'Success',
+      });
+    } else {
+      reject(new Error());
+    }
   });
   // ..then what happens after a resolve?
   myPromise
